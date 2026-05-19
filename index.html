@@ -1,12 +1,290 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aaron Hawthorne | Portfolio</title>
+    <style>
+        /* Base Styling & Custom Variables */
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --accent-purple: #a855f7;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: 70px; /* Offset for fixed header */
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-purple);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero / Introduction Profile Section */
+        .hero {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--text-main), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero .bio {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section Grid */
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan));
+            border-radius: 2px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--accent-cyan);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .tag.purple {
+            background-color: rgba(168, 85, 247, 0.1);
+            color: var(--accent-purple);
+        }
+
+        .project-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 60px;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 100px; background-color: #121212; color: #ffffff;">
-    <h1>Aaron Hawthorne</h1>
-    <p>Computer Science Student & Developer of games and apps</p>
-    <h2 style="color: #a855f7;">Portfolio Site Under Construction</h2>
-    <p>Check back soon to see my latest Python, automation, and game development projects!</p>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Keiila<span>Kode</span></a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="https://github.com/KeiilaKode" target="_blank">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <h1>Aaron Hawthorne</h1>
+        <div class="subtitle">Computer Science Student & Application Developer</div>
+        <p class="bio">
+            Passionate about backend automation, engineering clean software applications, and exploring cybersecurity landscapes. Focused on creating functional, real-world tools that improve workflows.
+        </p>
+    </section>
+
+    <section class="section-container" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Automated Transcription Pipeline</h3>
+                    <p class="project-desc">A Python orchestration pipeline utilizing yt-dlp to scrape specific media feeds and feed raw data directly into localized Whisper models for live, tracked text processing and rendering.</p>
+                </div>
+                <div>
+                    <div class="tag-container">
+                        <span class="tag">Python</span>
+                        <span class="tag purple">Whisper API</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details &rarr;</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Custom LLM Interface Engine</h3>
+                    <p class="project-desc">Designing and packaging a portable backend container designed to structure custom lightweight AI parameters into an independent Android system container execution layout.</p>
+                </div>
+                <div>
+                    <div class="tag-container">
+                        <span class="tag">Python</span>
+                        <span class="tag purple">Gemma Framework</span>
+                        <span class="tag">Android Development</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details &rarr;</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Interactive Immersive Mechanics</h3>
+                    <p class="project-desc">Developing customized behavior routines, complex logic engines, and custom environment scripting mechanics within isolated 3D simulation sandboxes.</p>
+                </div>
+                <div>
+                    <div class="tag-container">
+                        <span class="tag">Luau</span>
+                        <span class="tag purple">Game Architecture</span>
+                        <span class="tag">Logic Scripting</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Aaron Hawthorne. Built securely using GitHub Pages.</p>
+    </footer>
+
 </body>
 </html>
